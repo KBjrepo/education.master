@@ -34,9 +34,14 @@ dependencies {
 
 }
 
-//task runSelectedTests(type: Test) {
-//    useTestNG() {
-//        suites 'src/test/resources/testng.xml'
-//    }
-//    ignoreFailures = true
-//}
+test {
+    useTestNG()
+    ignoreFailures = true
+}
+
+task runSelectedTests(type: Test) {
+    useTestNG() {
+        suites 'src/test/resources/testng.xml'
+    }
+    ignoreFailures = true
+}
