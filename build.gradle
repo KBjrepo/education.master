@@ -42,6 +42,7 @@ test {
 task runSelectedTests(type: Test) {
     useTestNG() {
         suites 'src/test/resources/testng.xml'
+        
     }
     ignoreFailures = true
 }

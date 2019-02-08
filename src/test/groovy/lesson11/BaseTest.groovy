@@ -6,12 +6,12 @@ import org.testng.annotations.BeforeMethod
 
 class BaseTest {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     protected setUp() {
         Selenide.open("https://ya.ru/")
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     protected tearDown() {
         Selenide.close()
     }

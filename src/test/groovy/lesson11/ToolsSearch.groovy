@@ -1,31 +1,28 @@
 package lesson11
 
-
+import com.codeborne.selenide.CollectionCondition
 import groovy.util.logging.Slf4j
 import org.testng.annotations.Test
 
 import static com.codeborne.selenide.Selenide.$
-import static com.codeborne.selenide.logevents.SelenideLogger.addListener
+import static com.codeborne.selenide.Selenide.$$
 
 @Slf4j
 class ToolsSearch extends BaseTest {
 
 
-    @Test
+    @Test(groups = ["TEST_A"])
     void gradleSearchTest() {
-        addListener("LogListener", new LogListener())
         responseUrlList("Gradle")
     }
 
-    @Test
+    @Test(groups = ["TEST_B"])
     void groovySearchTest() {
-        addListener("LogListener", new LogListener())
         responseUrlList("Groovy")
     }
 
-    @Test
+    @Test(groups = ["TEST_C"])
     void testNGSearchTest() {
-        addListener("LogListener", new LogListener())
         responseUrlList("TestNG")
     }
 
@@ -33,9 +30,9 @@ class ToolsSearch extends BaseTest {
         def searchField = $("#text")
         searchField.value = textRequest
         $(".search2__button").click()
-        def urlList = $("a[href^=\"http\"]").getAttribute("href")//.shouldBe(CollectionCondition.sizeGreaterThan(1))
-//        urlList.each {
-//            $("a[href^=\"http\"]").getAttribute("href")
-//        }
+        def urlList = $$("h2 > a[href^=\"http\"]").shouldBe(CollectionCondition.sizeGreaterThan(1))
+        urlList.each {
+            log.info("Нашли запись $textRequest: ${it.getAttribute("href")}")
+        }
     }
 }
