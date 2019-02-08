@@ -30,8 +30,9 @@ class ToolsSearch extends BaseTest {
         def searchField = $("#text")
         searchField.value = textRequest
         $(".search2__button").click()
-        def urlList = $$("h2 > a[href^=\"http\"]").shouldBe(CollectionCondition.sizeGreaterThan(1))
+        def urlList = $$(".organic__url").shouldBe(CollectionCondition.sizeGreaterThan(1))
         urlList.each {
+            Thread.currentThread().sleep(200)
             log.info("Нашли запись $textRequest: ${it.getAttribute("href")}")
         }
     }
