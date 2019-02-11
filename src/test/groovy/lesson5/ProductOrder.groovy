@@ -2,24 +2,19 @@ package lesson5
 
 import com.codeborne.selenide.Condition
 import com.codeborne.selenide.Selenide
+import lesso5.model.AddressData
 import lesson5.elements.AddressForm
 import lesson5.pages.CheckoutPage
 import lesson5.steps.AddToCartSteps
 import lesson5.steps.ConfirmOrderSteps
 import org.testng.annotations.Test
 
-class ProductOrder {
-    @Test(invocationCount = 5, threadPoolSize = 5)
+class ProductOrder extends AddressForm {
+    @Test
     void testProductOrder() {
         Selenide.open("http://litecart.stqa.ru/en/")
         AddToCartSteps.addRandomProductToCart()
-        AddressForm.fillAddressForm("firstname", "1")
-        AddressForm.fillAddressForm("lastname", "2")
-        AddressForm.fillAddressForm("address1", "4")
-        AddressForm.fillAddressForm("postcode", "420066")
-        AddressForm.fillAddressForm("city", "Midnight")
-        AddressForm.fillAddressForm("phone", "+78005556565")
-        AddressForm.fillAddressForm("email", "xxx@xx.ru")
+        fillAddressForm(new AddressData("1", "2", "4", "420066", "Midnight", "+78005556565", "xxx@xx.ru"))
         CheckoutPage.getSaveChangeButton().shouldNotHave(Condition.disabled).click()
         ConfirmOrderSteps.fillComment("Вырази ложную мысль ясно, и она сама себя опровергнет")
         ConfirmOrderSteps.confirmOrder()
