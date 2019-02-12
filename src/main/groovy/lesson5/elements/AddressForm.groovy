@@ -1,6 +1,6 @@
 package lesson5.elements
 
-import lesso5.model.AddressData
+import lesson5.model.AddressData
 
 import static com.codeborne.selenide.Selenide.$
 

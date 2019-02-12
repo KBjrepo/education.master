@@ -2,7 +2,7 @@ package lesson5
 
 import com.codeborne.selenide.Condition
 import com.codeborne.selenide.Selenide
-import lesso5.model.AddressData
+import lesson5.model.AddressData
 import lesson5.elements.AddressForm
 import lesson5.pages.CheckoutPage
 import lesson5.steps.AddToCartSteps

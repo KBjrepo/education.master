@@ -1,4 +1,4 @@
-package lesso5.model
+package lesson5.model
 
 class AddressData {
 
@@ -10,7 +10,7 @@ class AddressData {
     private phone
     private email
 
-    AddressData(String firstname, String lastname, String address1, String postcode, String city, String phone, String email) {
+    AddressData(String firstname, lastname, address1, postcode, city, phone, email) {
         this.firstname = firstname
         this.lastname = lastname
         this.address1 = address1
